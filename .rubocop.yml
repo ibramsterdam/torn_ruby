@@ -1,3 +1,7 @@
+require:
+  - rubocop-rake
+  - rubocop-rspec
+
 AllCops:
   TargetRubyVersion: 3.1
 
@@ -6,3 +10,9 @@ Style/StringLiterals:
 
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
+
+Metrics/BlockLength:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false

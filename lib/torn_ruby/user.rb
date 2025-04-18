@@ -3,6 +3,9 @@
 require_relative "utils"
 
 module TornRuby
+  # Responsible for representing a user in the Torn City game.
+  # It encapsulates user data retrieved from the Torn City API and provides access
+  # to the various attributes of the user
   class User
     def initialize(data)
       symbolized_data = TornRuby::Utils.deep_symbolize_keys(data)

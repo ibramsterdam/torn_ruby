@@ -7,7 +7,8 @@ RSpec.describe TornRuby::Client do
   let(:client) { described_class.new(api_key: api_key) }
 
   describe "#user" do
-    let(:subject) { client.user }
+    subject(:user) { client.user }
+
     let(:mock_response) do
       {
         "rank" => "Star Trader",
@@ -21,13 +22,13 @@ RSpec.describe TornRuby::Client do
     end
 
     before do
-      allow_any_instance_of(TornRuby::Endpoints::User)
-        .to receive(:fetch)
-        .and_return(mock_response)
+      user_endpoint = instance_double(TornRuby::Endpoints::User)
+      allow(TornRuby::Endpoints::User).to receive(:new).and_return(user_endpoint)
+      allow(user_endpoint).to receive(:fetch).and_return(mock_response)
     end
 
     it "returns a TornRuby::User with expected attributes" do
-      expect(subject).to be_a(TornRuby::User)
+      expect(user).to be_a(TornRuby::User)
         .and have_attributes(
           rank: "Star Trader",
           level: 37,

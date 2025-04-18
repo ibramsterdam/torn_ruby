@@ -8,8 +8,10 @@ Gem::Specification.new do |spec|
   spec.authors = ["Bram"]
   spec.email = ["bramjanssen@hey.com"]
 
-  spec.summary = "A Ruby gem for interacting with the Torn City API, providing easy access to game data and functionality."
-  spec.description = "A Ruby gem that provides a convenient wrapper around the Torn City API. Ideal for developers looking to integrate Torn City data into Ruby applications."
+  spec.summary = "A Ruby gem for interacting with the Torn City API, providing easy access to" \
+                 "game data and functionality."
+  spec.description = "A Ruby gem that provides a convenient wrapper around the Torn City API." \
+                     "Ideal for developers looking to integrate Torn City data into Ruby applications."
 
   spec.homepage = "https://github.com/ibramsterdam/torn_ruby"
 

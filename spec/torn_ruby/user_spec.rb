@@ -3,6 +3,8 @@
 require "spec_helper"
 
 RSpec.describe TornRuby::User do
+  subject(:user) { described_class.new(data) }
+
   let(:data) do
     {
       "rank" => "Star Trader",
@@ -12,10 +14,8 @@ RSpec.describe TornRuby::User do
     }
   end
 
-  subject(:user) { described_class.new(data) }
-
   it do
-    is_expected.to have_attributes(
+    expect(user).to have_attributes(
       rank: "Star Trader",
       level: 37,
       name: "Bram",

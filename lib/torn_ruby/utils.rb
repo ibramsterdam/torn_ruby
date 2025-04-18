@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module TornRuby
+  # Utility methods for common operations used within the TornRuby gem
   module Utils
     # Thank you ActiveSupport for this great method :-)
     def deep_symbolize_keys(obj)

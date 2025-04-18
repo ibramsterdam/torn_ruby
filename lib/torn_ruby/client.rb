@@ -4,6 +4,8 @@ require_relative "endpoints/user"
 require_relative "user"
 
 module TornRuby
+  # Responsible for interacting with the Torn API
+  # and providing an interface to access various endpoints.
   class Client
     BASE_URL = "https://api.torn.com"
 

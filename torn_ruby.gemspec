@@ -22,7 +22,6 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = "https://github.com/ibramsterdam/torn_ruby"
   spec.metadata["changelog_uri"] = "https://github.com/ibramsterdam/torn_ruby/blob/main/CHANGELOG.md"
 
-
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   gemspec = File.basename(__FILE__)
@@ -38,6 +37,6 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
-  spec.add_development_dependency "pry"
   spec.add_development_dependency "fiddle"
+  spec.add_development_dependency "pry"
 end

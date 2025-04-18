@@ -20,8 +20,13 @@ gem install torn_ruby
 ```
 
 ## Usage
+To use the TornRuby gem, you’ll need a valid Torn API key.
 
-TODO: Write usage instructions here
+```ruby
+api_key = "Valid Torn Api Key"
+client = TornRuby::Client.new(api_key:)
+user = client.user
+```
 
 ## Contributing
 

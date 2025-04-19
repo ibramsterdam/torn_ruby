@@ -40,4 +40,50 @@ RSpec.describe TornRuby::Client do
         )
     end
   end
+
+  describe "#property" do
+    subject(:property) { client.property }
+
+    let(:mock_response) do
+      {
+        "owner_id" => 123_456,
+        "property_type" => 5,
+        "happy" => 9000,
+        "upkeep" => 100_000,
+        "upgrades" => %w[pool gym],
+        "staff" => %w[maid guard],
+        "rented" => false,
+        "users_living" => "123456,654321"
+      }
+    end
+
+    before do
+      property_endpoint = instance_double(TornRuby::Endpoints::Property)
+
+      allow(TornRuby::Endpoints::Property).to receive(:new).and_return(property_endpoint)
+      allow(property_endpoint).to receive(:fetch).and_return(mock_response)
+    end
+
+    it "returns a TornRuby::Property with expected attributes" do
+      expect(property).to be_a(TornRuby::Property)
+        .and have_attributes(
+          owner_id: 123_456,
+          property_type: 5,
+          happy: 9000,
+          upkeep: 100_000,
+          upgrades: %w[pool gym],
+          staff: %w[maid guard],
+          rented: false,
+          users_living: "123456,654321"
+        )
+    end
+
+    it "parses living user ids correctly" do
+      expect(property.living_user_ids).to eq([123_456, 654_321])
+    end
+
+    it "returns false for rented?" do
+      expect(property.rented?).to be(false)
+    end
+  end
 end

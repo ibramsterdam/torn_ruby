@@ -8,6 +8,7 @@ require_relative "endpoints/market"
 require_relative "endpoints/torn"
 require_relative "endpoints/racing"
 require_relative "endpoints/forum"
+require_relative "endpoints/key"
 require_relative "user"
 require_relative "property"
 require_relative "faction"
@@ -16,6 +17,7 @@ require_relative "market"
 require_relative "torn"
 require_relative "racing"
 require_relative "forum"
+require_relative "key"
 
 module TornRuby
   # Responsible for interacting with the Torn API
@@ -63,6 +65,11 @@ module TornRuby
     def forum(path: nil, selections: nil)
       data = TornRuby::Endpoints::Forum.new(@api_key).fetch(path:, selections:)
       TornRuby::Forum.new(data)
+    end
+
+    def key(path: nil, selections: nil)
+      data = TornRuby::Endpoints::Key.new(@api_key).fetch(path:, selections:)
+      TornRuby::Key.new(data)
     end
   end
 end

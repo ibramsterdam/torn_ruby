@@ -123,4 +123,79 @@ RSpec.describe TornRuby::Client do
         )
     end
   end
+
+  describe "#company" do
+    subject(:company) { client.company }
+
+    let(:mock_response) do
+      {
+        "ID" => 96_842,
+        "company_type" => 26,
+        "rating" => 8,
+        "name" => "Slippery When Wet",
+        "director" => 3_391_134,
+        "employees_hired" => 10,
+        "employees_capacity" => 10,
+        "daily_income" => 1_322_838,
+        "daily_customers" => 24_009,
+        "weekly_income" => 13_071_476,
+        "weekly_customers" => 239_180,
+        "days_old" => 950,
+        "employees" => {
+          "207875" => {
+            "name" => "wryte",
+            "position" => "Manager",
+            "days_in_company" => 236,
+            "last_action" => {
+              "status" => "Offline",
+              "timestamp" => 1_744_802_457,
+              "relative" => "3 days ago"
+            },
+            "status" => {
+              "description" => "Okay",
+              "details" => "",
+              "state" => "Okay",
+              "color" => "green",
+              "until" => 0
+            }
+          }
+        }
+      }
+    end
+
+    before do
+      endpoint = instance_double(TornRuby::Endpoints::Company)
+      allow(TornRuby::Endpoints::Company).to receive(:new).and_return(endpoint)
+      allow(endpoint).to receive(:fetch).and_return(mock_response)
+    end
+
+    it "returns a TornRuby::Company with expected attributes" do
+      expect(company).to be_a(TornRuby::Company)
+        .and have_attributes(
+          name: "Slippery When Wet",
+          director: 3_391_134,
+          employees_hired: 10,
+          daily_income: 1_322_838
+        )
+    end
+
+    it "has employee data accessible by string ID" do
+      employee = company.employees["207875"]
+      expect(employee).to include(
+        name: "wryte",
+        position: "Manager",
+        days_in_company: 236,
+        last_action: hash_including(
+          status: "Offline",
+          timestamp: 1_744_802_457,
+          relative: "3 days ago"
+        ),
+        status: hash_including(
+          description: "Okay",
+          state: "Okay",
+          color: "green"
+        )
+      )
+    end
+  end
 end

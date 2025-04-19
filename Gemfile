@@ -14,3 +14,8 @@ gem "rubocop", "~> 1.21"
 gem "rubocop-rspec", "~> 3.6"
 
 gem "rubocop-rake", "~> 0.7.1"
+
+group :development, :test do
+  gem "pry"
+  gem "pry-byebug"
+end

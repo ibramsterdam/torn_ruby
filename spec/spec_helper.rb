@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "torn_ruby"
+require "pry"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

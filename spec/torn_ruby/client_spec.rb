@@ -302,7 +302,7 @@ RSpec.describe TornRuby::Client do
             "safety": 20,
             "tarmac": 20,
             "class": "D"
-          },
+          }
         ]
       }
     end

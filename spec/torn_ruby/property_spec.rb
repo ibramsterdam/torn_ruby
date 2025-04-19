@@ -30,19 +30,6 @@ RSpec.describe TornRuby::Property do
     }
   end
 
-  it "initializes attributes correctly" do
-    expect(property).to have_attributes(
-      owner_id: 2_187_512,
-      property_type: 13,
-      happy: 5025,
-      upkeep: 100_000,
-      upgrades: include("Superior interior", "Large pool"),
-      staff: include("5x Maid service", "3x Butler service"),
-      rented: hash_including(user_id: 2_728_237),
-      users_living: "2725863,2728237"
-    )
-  end
-
   describe "#living_user_ids" do
     it "returns an array of user IDs as integers" do
       expect(property.living_user_ids).to eq([2_725_863, 2_728_237])

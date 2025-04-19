@@ -14,10 +14,6 @@ module TornRuby
     class Property < Base
       AVAILABLE_FIELDS = %w[property].freeze
 
-      def valid_fields?(fields)
-        fields.all? { |field| AVAILABLE_FIELDS.include?(field) }
-      end
-
       private
 
       def handle_response(response)

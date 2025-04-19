@@ -198,4 +198,90 @@ RSpec.describe TornRuby::Client do
       )
     end
   end
+
+  describe "#market" do
+    subject(:market) { client.market }
+
+    let(:mock_response) do
+      {
+        "ID" => 96_842,
+        "company_type" => 26,
+        "rating" => 8,
+        "name" => "Slippery When Wet",
+        "director" => 3_391_134,
+        "employees_hired" => 10,
+        "employees_capacity" => 10,
+        "daily_income" => 1_322_838,
+        "daily_customers" => 24_009,
+        "weekly_income" => 13_071_476,
+        "weekly_customers" => 239_180,
+        "days_old" => 950
+      }
+    end
+
+    before do
+      market_endpoint = instance_double(TornRuby::Endpoints::Market)
+      allow(TornRuby::Endpoints::Market).to receive(:new).and_return(market_endpoint)
+      allow(market_endpoint).to receive(:fetch).and_return(mock_response)
+    end
+
+    it "returns a TornRuby::Company with expected attributes" do
+      expect(market).to be_a(TornRuby::Company)
+        .and have_attributes(
+          name: "Slippery When Wet",
+          director: 3_391_134,
+          employees_hired: 10,
+          daily_income: 1_322_838
+        )
+    end
+  end
+
+  describe "#torn" do
+    subject(:torn) { client.torn }
+
+    let(:mock_response) do
+      {
+        "bounties" => [
+          {
+            "target_id" => 2_556_147,
+            "target_name" => "salakau",
+            "target_level" => 36,
+            "lister_id" => 2_932_719,
+            "lister_name" => "Ridyard",
+            "reward" => 1_000_000,
+            "reason" => nil,
+            "quantity" => 1,
+            "is_anonymous" => false,
+            "valid_until" => 1_745_619_969
+          }
+        ]
+      }
+    end
+
+    before do
+      torn_endpoint = instance_double(TornRuby::Endpoints::Torn)
+      allow(TornRuby::Endpoints::Torn).to receive(:new).and_return(torn_endpoint)
+      allow(torn_endpoint).to receive(:fetch).and_return(mock_response)
+    end
+
+    it "returns a TornRuby::Torn with expected attributes" do
+      expect(torn).to be_a(TornRuby::Torn)
+        .and have_attributes(
+          bounties: match_array(
+            hash_including(
+              target_id: 2_556_147,
+              target_name: "salakau",
+              target_level: 36,
+              lister_id: 2_932_719,
+              lister_name: "Ridyard",
+              reward: 1_000_000,
+              reason: nil,
+              quantity: 1,
+              is_anonymous: false,
+              valid_until: 1_745_619_969
+            )
+          )
+        )
+    end
+  end
 end

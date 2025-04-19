@@ -5,11 +5,13 @@ require_relative "endpoints/property"
 require_relative "endpoints/faction"
 require_relative "endpoints/company"
 require_relative "endpoints/market"
+require_relative "endpoints/torn"
 require_relative "user"
 require_relative "property"
 require_relative "faction"
 require_relative "company"
 require_relative "market"
+require_relative "torn"
 
 module TornRuby
   # Responsible for interacting with the Torn API
@@ -41,7 +43,12 @@ module TornRuby
 
     def market(id: nil, selections: nil)
       data = TornRuby::Endpoints::Market.new(@api_key).fetch(id: id, selections: selections)
-      TornRuby::Market.new(data)
+      TornRuby::Company.new(data)
+    end
+
+    def torn(id: nil, selections: nil)
+      data = TornRuby::Endpoints::Torn.new(@api_key).fetch(id: id, selections: selections)
+      TornRuby::Torn.new(data)
     end
   end
 end

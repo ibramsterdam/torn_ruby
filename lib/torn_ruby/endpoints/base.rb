@@ -25,7 +25,7 @@ module TornRuby
       end
 
       def valid_fields?(fields)
-        raise NotImplementedError, "#{self.class} must implement #valid_fields?"
+        fields.all? { |field| self.class::AVAILABLE_FIELDS.include?(field) }
       end
 
       private

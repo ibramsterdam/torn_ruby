@@ -13,10 +13,6 @@ module TornRuby
     # from the API and handles the response by parsing the JSON data into a usable format.
     class Market < Base
       AVAILABLE_FIELDS = %w[bazaar itemmarket lookup pointsmarket timestamp].freeze
-
-      def valid_fields?(fields)
-        fields.all? { |field| AVAILABLE_FIELDS.include?(field) }
-      end
     end
   end
 end

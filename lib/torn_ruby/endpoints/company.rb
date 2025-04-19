@@ -16,10 +16,6 @@ module TornRuby
         companies lookup profile timestamp applications detailed
         employees news stock
       ].freeze
-
-      def valid_fields?(fields)
-        fields.all? { |field| AVAILABLE_FIELDS.include?(field) }
-      end
     end
   end
 end

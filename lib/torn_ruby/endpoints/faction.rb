@@ -20,10 +20,6 @@ module TornRuby
         reports revives revivesfull stats temporary territory territorynews
         timestamp upgrades wars weapons
       ].freeze
-
-      def valid_fields?(fields)
-        fields.all? { |field| AVAILABLE_FIELDS.include?(field) }
-      end
     end
   end
 end

@@ -23,10 +23,6 @@ module TornRuby
         properties races refills reports revives revivesfull skills stocks
         timestamp travel weaponexp workstats
       ].freeze
-
-      def valid_fields?(fields)
-        fields.all? { |field| AVAILABLE_FIELDS.include?(field) }
-      end
     end
   end
 end

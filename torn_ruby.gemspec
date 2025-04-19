@@ -20,10 +20,6 @@ Gem::Specification.new do |spec|
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
-  spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/ibramsterdam/torn_ruby"
-  spec.metadata["changelog_uri"] = "https://github.com/ibramsterdam/torn_ruby/blob/main/CHANGELOG.md"
-
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   gemspec = File.basename(__FILE__)
@@ -31,6 +27,7 @@ Gem::Specification.new do |spec|
     ls.readlines("\x0", chomp: true).reject do |f|
       (f == gemspec) ||
         f.start_with?(*%w[bin/ test/ spec/ features/ .git .github appveyor Gemfile])
+      f.end_with?(".gem") # Exclude .gem files
     end
   end
   spec.bindir = "exe"
@@ -39,6 +36,6 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
-  spec.add_development_dependency 'pry', '~> 0.15'
-  spec.add_development_dependency 'fiddle', '~> 1.1'
+  spec.add_development_dependency "fiddle", "~> 1.1"
+  spec.add_development_dependency "pry", "~> 0.15"
 end

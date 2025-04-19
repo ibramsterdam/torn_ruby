@@ -19,3 +19,7 @@ group :development, :test do
   gem "pry"
   gem "pry-byebug"
 end
+
+group :test do
+  gem "simplecov", require: false
+end

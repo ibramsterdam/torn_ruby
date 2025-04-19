@@ -1,5 +1,5 @@
 # TornRuby
-
+[![Gem Version](https://badge.fury.io/rb/torn_ruby.svg)](https://badge.fury.io/rb/torn_ruby)
 An implementation of the [Torn](https://www.torn.com/api.html) V2 API using Ruby.
 
 ## Installation

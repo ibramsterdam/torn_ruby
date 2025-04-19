@@ -12,7 +12,7 @@ module TornRuby
     # for specific fields to retrieve. The class ensures that only valid fields are requested
     # from the API and handles the response by parsing the JSON data into a usable format.
     class Company < Base
-      AVAILABLE_FIELDS = %w[
+      AVAILABLE_FIELDS = %i[
         companies lookup profile timestamp applications detailed
         employees news stock
       ].freeze

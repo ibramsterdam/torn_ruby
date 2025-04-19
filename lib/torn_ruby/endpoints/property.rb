@@ -12,7 +12,7 @@ module TornRuby
     # for specific fields to retrieve. The class ensures that only valid fields are requested
     # from the API and handles the response by parsing the JSON data into a usable format.
     class Property < Base
-      AVAILABLE_FIELDS = %w[property].freeze
+      AVAILABLE_FIELDS = %i[property].freeze
 
       private
 

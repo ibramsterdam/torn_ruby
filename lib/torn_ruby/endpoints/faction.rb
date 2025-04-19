@@ -12,7 +12,7 @@ module TornRuby
     # for specific fields to retrieve. The class ensures that only valid fields are requested
     # from the API and handles the response by parsing the JSON data into a usable format.
     class Faction < Base
-      AVAILABLE_FIELDS = %w[
+      AVAILABLE_FIELDS = %i[
         applications armor armorynews attacknews attacks attacksfull balance basic
         boosters caches cesium chain chainreport chains contributors crimeexp
         crimenews crimes currency donations drugs fundsnews hof lookup mainnews

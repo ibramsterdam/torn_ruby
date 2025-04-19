@@ -14,13 +14,13 @@ module TornRuby
         @api_key = api_key
       end
 
-      def fetch(id: nil, selections: nil)
+      def fetch(path: nil, selections: nil)
         selections = [] if selections.nil?
 
         raise TornRuby::Error, "Invalid fields selected" if respond_to?(:valid_fields?) && !valid_fields?(selections)
 
         params = build_params(selections)
-        path = build_path(id)
+        path = build_path(path)
         handle_response(make_request(build_uri(path, params)))
       end
 
@@ -40,10 +40,10 @@ module TornRuby
         URI("#{BASE_URL}#{path}?#{params.join("&")}")
       end
 
-      def build_path(id)
-        path = "/#{self.class.name.split("::").last.downcase}"
-        path += "/#{id}" if id
-        path
+      def build_path(path)
+        full_path = "/#{self.class.name.split("::").last.downcase}"
+        full_path += "/#{path}" if path
+        full_path
       end
 
       def make_request(uri)

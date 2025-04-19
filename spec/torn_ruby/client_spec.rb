@@ -284,4 +284,53 @@ RSpec.describe TornRuby::Client do
         )
     end
   end
+
+  describe "#racing" do
+    subject(:racing) { client.racing }
+
+    let(:mock_response) do
+      {
+        "cars": [
+          {
+            "car_item_id": 77,
+            "car_item_name": "Tabata RM2",
+            "top_speed": 25,
+            "acceleration": 20,
+            "braking": 15,
+            "dirt": 15,
+            "handling": 20,
+            "safety": 20,
+            "tarmac": 20,
+            "class": "D"
+          },
+        ]
+      }
+    end
+
+    before do
+      racing_endpoint = instance_double(TornRuby::Endpoints::Racing)
+      allow(TornRuby::Endpoints::Racing).to receive(:new).and_return(racing_endpoint)
+      allow(racing_endpoint).to receive(:fetch).and_return(mock_response)
+    end
+
+    it "returns a TornRuby::Racing with expected attributes" do
+      expect(racing).to be_a(TornRuby::Racing)
+        .and have_attributes(
+          cars: match_array(
+            hash_including(
+              car_item_id: 77,
+              car_item_name: "Tabata RM2",
+              top_speed: 25,
+              acceleration: 20,
+              braking: 15,
+              dirt: 15,
+              handling: 20,
+              safety: 20,
+              tarmac: 20,
+              class: "D"
+            )
+          )
+        )
+    end
+  end
 end

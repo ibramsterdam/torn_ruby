@@ -86,4 +86,41 @@ RSpec.describe TornRuby::Client do
       expect(property.rented?).to be(false)
     end
   end
+
+  describe "#faction" do
+    subject(:faction) { client.faction }
+
+    let(:mock_response) do
+      {
+        "ID" => 38_761,
+        "name" => "Shadow Healers",
+        "respect" => 2_450_100,
+        "rank" => {
+          "level" => 9,
+          "name" => "Silver",
+          "division" => 3
+        }
+      }
+    end
+
+    before do
+      faction_endpoint = instance_double(TornRuby::Endpoints::Faction)
+      allow(TornRuby::Endpoints::Faction).to receive(:new).and_return(faction_endpoint)
+      allow(faction_endpoint).to receive(:fetch).and_return(mock_response)
+    end
+
+    it "returns a TornRuby::Faction with expected attributes" do
+      expect(faction).to be_a(TornRuby::Faction)
+        .and have_attributes(
+          ID: 38_761,
+          name: "Shadow Healers",
+          respect: 2_450_100,
+          rank: hash_including(
+            level: 9,
+            name: "Silver",
+            division: 3
+          )
+        )
+    end
+  end
 end

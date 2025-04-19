@@ -2,8 +2,10 @@
 
 require_relative "endpoints/user"
 require_relative "endpoints/property"
+require_relative "endpoints/faction"
 require_relative "user"
 require_relative "property"
+require_relative "faction"
 
 module TornRuby
   # Responsible for interacting with the Torn API
@@ -21,6 +23,11 @@ module TornRuby
     def property(id: nil, selections: nil)
       data = TornRuby::Endpoints::Property.new(@api_key).fetch(id: id, selections: selections)
       TornRuby::Property.new(data)
+    end
+
+    def faction(id: nil, selections: nil)
+      data = TornRuby::Endpoints::Faction.new(@api_key).fetch(id: id, selections: selections)
+      TornRuby::Faction.new(data)
     end
   end
 end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    torn_ruby (1.0.1.beta)
+    torn_ruby (1.1.1)
 
 GEM
   remote: https://rubygems.org/

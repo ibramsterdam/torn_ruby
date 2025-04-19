@@ -15,3 +15,11 @@
 - Improved internal architecture by extracting common logic to `Base` endpoint class
 - Added comprehensive test coverage for all v2 endpoints
 - Refactored and documented code for maintainability and clarity
+
+## [1.0.1.beta] - 2025-04-18
+
+- Fix Docs
+
+## [1.1.0] - 2025-04-18
+
+- Added `Key` endpoint

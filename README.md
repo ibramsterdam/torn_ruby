@@ -21,9 +21,20 @@ gem install torn_ruby
 To use the TornRuby gem, you’ll need a valid Torn API key.
 
 ```ruby
+require "torn_ruby"
+
 api_key = "Valid Torn Api Key"
 client = TornRuby::Client.new(api_key:)
+
+# Fetch basic data
 user = client.user
+puts user.name  # => "YourTornName"
+
+# Fetch specific selections by passing symbols
+user = client.user(selections: [:profile])
+
+# Some endpoints require you to specify a path
+racing = client.racing(path: :carupgrades)
 ```
 
 ## Contributing

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module TornRuby
-  VERSION = "0.1.0.beta"
+  VERSION = "1.0.0.beta"
 end

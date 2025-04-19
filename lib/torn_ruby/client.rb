@@ -9,8 +9,6 @@ module TornRuby
   # Responsible for interacting with the Torn API
   # and providing an interface to access various endpoints.
   class Client
-    BASE_URL = "https://api.torn.com"
-
     def initialize(api_key:)
       @api_key = api_key
     end

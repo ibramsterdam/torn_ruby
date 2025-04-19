@@ -1,6 +1,6 @@
 # TornRuby
 
-An implementation of the [Torn](https://www.torn.com/api.html) API using Ruby.
+An implementation of the [Torn](https://www.torn.com/api.html) V2 API using Ruby.
 
 ## Installation
 

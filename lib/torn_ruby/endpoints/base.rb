@@ -8,6 +8,8 @@ module TornRuby
   module Endpoints
     # Base class for all endpoints
     class Base
+      BASE_URL = "https://api.torn.com/v2"
+
       def initialize(api_key)
         @api_key = api_key
       end
@@ -35,7 +37,7 @@ module TornRuby
       end
 
       def build_uri(path, params)
-        URI("https://api.torn.com#{path}?#{params.join("&")}")
+        URI("#{BASE_URL}#{path}?#{params.join("&")}")
       end
 
       def build_path(id)
